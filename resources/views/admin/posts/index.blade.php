@@ -1,10 +1,12 @@
 @extends('layouts.dashboard')
 @section('content')
 <div class="my-3">
-    <a href="{{route('admin.posts.create')}}">Add Post</a>
+    <a href="{{route('admin.posts.create')}}">
+        <button class="btn btn-primary">Add Post</button>
+    </a>
 </div>
-<table class="table">
-    <thead>
+<table class="table table-hover">
+    <thead class="table-light">
         <tr>
             <th scope="col">#id</th>
             <th scope="col">Title</th>
@@ -17,7 +19,7 @@
         <tr>
             <td>{{$post->id}}</td>
             <td>
-                <a href="{{route('admin.posts.show', $post->id)}}">
+                <a class="text-decoration-none" href="{{route('admin.posts.show', $post->id)}}">
                     {{$post->title}}</td>
                 </a>
             <td>{{$post->body}}</td>

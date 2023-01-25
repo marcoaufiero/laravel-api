@@ -35,7 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li>
-                            <a href="{{route('admin.posts.index')}}">
+                            <a class="text-decoration-none fs-5" href="{{route('admin.posts.index')}}">
                                 Lista posts
                             </a>
                         </li>

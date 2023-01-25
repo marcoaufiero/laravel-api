@@ -21,7 +21,12 @@
                     {{$post->title}}</td>
                 </a>
             <td>{{$post->body}}</td>
-            <td>icons</td>
+            <td>
+                <a href="{{route('admin.posts.edit', $post->id)}}">
+                    <button class="btn btn-dark text-info">Edit</button>
+                </a>
+                
+            </td>
         </tr>
         @endforeach    
     </tbody>

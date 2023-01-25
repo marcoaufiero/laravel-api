@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 @section('content')
-
+<div class="my-3">
+    <a href="{{route('admin.posts.create')}}">Add Post</a>
+</div>
 <table class="table">
     <thead>
         <tr>

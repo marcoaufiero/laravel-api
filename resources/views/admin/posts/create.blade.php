@@ -26,6 +26,9 @@
                 </div>
             @enderror
         </div>
+        <div class="my-3">
+            
+        </div>
         <button type="submit" class="btn btn-success">Send</button>
     </form>
 

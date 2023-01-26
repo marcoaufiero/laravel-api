@@ -11,6 +11,7 @@
             <th scope="col">#id</th>
             <th scope="col">Title</th>
             <th scope="col">Body</th>
+            <th scope="col">Category</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -23,6 +24,11 @@
                     {{$post->title}}</td>
                 </a>
             <td>{{$post->body}}</td>
+            <td>
+                @if($post->category)
+                {{$post->category['name']}}
+                @endif
+            </td>
             <td>
                 <a href="{{route('admin.posts.edit', $post->id)}}">
                     <button class="btn btn-dark text-info">Edit</button>

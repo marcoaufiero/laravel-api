@@ -27,6 +27,8 @@
             <td>
                 @if($post->category)
                 {{$post->category['name']}}
+                @else
+                Null
                 @endif
             </td>
             <td>

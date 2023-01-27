@@ -12,6 +12,7 @@
             <th scope="col">Title</th>
             <th scope="col">Body</th>
             <th scope="col">Category</th>
+            <th scope="col">Tags</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -30,6 +31,11 @@
                 @else
                 Null
                 @endif
+            </td>
+            <td>
+                @foreach ($post->tags as $tag)
+                    {{$tag->name}}
+                @endforeach
             </td>
             <td>
                 <a href="{{route('admin.posts.edit', $post->id)}}">

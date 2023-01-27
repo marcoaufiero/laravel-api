@@ -39,6 +39,13 @@
                 @endforeach
             </select>
         </div>
+        <div class="my-3">
+            <label class="form-label" for="">Tags: </label>
+            @foreach ($tags as $tag)
+                <span>{{$tag->name}}</span>
+                    <input type="checkbox" name="tags[]" value="{{$tag->id}}" {{$post->tags->contains($tag) ? 'checked' : '' }}>    
+            @endforeach
+        </div>
         <button type="submit" class="btn btn-success">Edit</button>
     </form>
 

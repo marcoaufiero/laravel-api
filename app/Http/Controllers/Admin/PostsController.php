@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Tag;
 use App\Category;
 use App\Post;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class PostsController extends Controller
     public function index()
     {
         $data = [
-            'posts' => Post::with('category')->paginate(10)
+            'posts' => Post::with('category', 'tags')->paginate(10)
         ];
         return view('admin.posts.index', $data);
     }
@@ -29,11 +30,11 @@ class PostsController extends Controller
      */
     public function create()
     {   
-        $data = [
-            'categories' => Category::All()
-        ];
-        
-        return view('admin.posts.create', $data);
+       
+        $categories = Category::All();
+        $tags = Tag::All();
+    
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -54,6 +55,10 @@ class PostsController extends Controller
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->save();
+
+        if( array_key_exists( 'tags', $data)){
+            $newPost->tags()->sync( $data['tags']);
+        }
 
         return redirect()->route('admin.posts.show', $newPost->id);
     }
@@ -82,7 +87,9 @@ class PostsController extends Controller
 
         $categories = Category::All();
 
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $tags = Tag::All();
+
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -99,6 +106,12 @@ class PostsController extends Controller
 
         $singlePost->update($data);
 
+        if(array_key_exists('tags', $data)){
+            $singlePost->tags()->sync($data['tags']);
+        }else{
+            $singlePost->tags()->sync([]);
+        }
+
         return redirect()->route('admin.posts.show', $singlePost->id);
     }
 
@@ -111,6 +124,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $singlePost = Post::findOrFail($id);
+        $singlePost->tags()->sync([]);
         $singlePost->delete();
 
         return redirect()->route('admin.posts.index');

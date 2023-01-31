@@ -6,8 +6,11 @@ use App\Tag;
 use App\Category;
 use App\Post;
 use App\Http\Controllers\Controller;
+use App\Mail\CreatePostMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -66,6 +69,10 @@ class PostsController extends Controller
         if( array_key_exists( 'tags', $data)){
             $newPost->tags()->sync( $data['tags']);
         }
+
+        $mail = new CreatePostMail($newPost);
+        $user_email = Auth::user()->email;
+        Mail::to($user_email)->send($mail);
 
         return redirect()->route('admin.posts.show', $newPost->id);
     }

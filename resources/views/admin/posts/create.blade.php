@@ -5,7 +5,7 @@
         <h1>Crea un post</h1>
     </div>
 
-    <form action="{{route('admin.posts.store')}}" method="POST">
+    <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="my-3">
@@ -26,6 +26,7 @@
                 </div>
             @enderror
         </div>
+        
         <div class="my-3">
             <label for="">Category</label>
             <select class="form-control" name="category_id" id="">
@@ -37,6 +38,7 @@
                 @endforeach
             </select>
         </div>
+        
         <div class="my-3">
             <label class="form-label" for="">Tags: </label>
             @foreach ($tags as $tag)
@@ -44,6 +46,12 @@
                     <input type="checkbox" name="tags[]" value="{{$tag->id}}">    
             @endforeach
         </div>
+        
+        <div class="my-3">
+            <label for="">Image</label>
+            <input type="file" name="image" class="form-control-file">
+        </div>
+        
         <button type="submit" class="btn btn-success">Send</button>
     </form>
 

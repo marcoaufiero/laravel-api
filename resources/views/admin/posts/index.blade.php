@@ -34,7 +34,7 @@
             </td>
             <td>
                 @foreach ($post->tags as $tag)
-                    {{$tag->name}}
+                    {{$tag->name}},
                 @endforeach
             </td>
             <td>

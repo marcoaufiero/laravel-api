@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container my-5">
         <PostsList/>
     </div>
 </template>
@@ -18,3 +18,7 @@ export default {
 
 
 </script>
+
+<style>
+
+</style>

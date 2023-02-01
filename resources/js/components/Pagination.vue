@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  class="d-flex justify-content-center">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li @click="$emit('on-page-change', pagination.currentPage - 1)" v-if="pagination.currentPage > 1" class="page-item" role="button">

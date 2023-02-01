@@ -2069,6 +2069,11 @@ var render = function render() {
     staticClass: "page-item",
     attrs: {
       role: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.$emit("on-page-change", _vm.pagination.currentPage - 1);
+      }
     }
   }, [_c("span", {
     staticClass: "page-link",
@@ -2081,6 +2086,11 @@ var render = function render() {
       staticClass: "page-item",
       attrs: {
         role: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.$emit("on-page-change", n);
+        }
       }
     }, [_c("span", {
       staticClass: "page-link",
@@ -2092,6 +2102,11 @@ var render = function render() {
     staticClass: "page-item",
     attrs: {
       role: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.$emit("on-page-change", _vm.pagination.currentPage + 1);
+      }
     }
   }, [_c("span", {
     staticClass: "page-link",
@@ -2123,10 +2138,17 @@ var render = function render() {
   return _c("div", [_vm.isLoading ? _c("Loader") : _vm._e(), _vm._v(" "), _vm.posts.length ? _c("ul", _vm._l(_vm.posts, function (elem) {
     return _c("li", {
       key: elem.id
-    }, [_vm._v(_vm._s(elem.title))]);
+    }, [_vm._v("\n            " + _vm._s(elem.title) + "\n            "), elem.category ? _c("span", [_vm._v("\n                " + _vm._s(elem.category.name) + "\n            ")]) : _vm._e(), _vm._v(" "), _c("ol", _vm._l(elem.tags, function (tag) {
+      return _c("li", {
+        key: tag.id
+      }, [_vm._v(_vm._s(tag.name))]);
+    }), 0)]);
   }), 0) : _c("p", [_vm._v("Non ci sono posts")]), _vm._v(" "), _c("Pagination", {
     attrs: {
       pagination: _vm.pagination
+    },
+    on: {
+      "on-page-change": _vm.getPosts
     }
   })], 1);
 };

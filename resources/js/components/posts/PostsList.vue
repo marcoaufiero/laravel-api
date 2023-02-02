@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-5">
+  <div class="container py-5">
     <Loader v-if="isLoading" />
     <div class="card-container my-5">
         
@@ -86,8 +86,7 @@ export default {
         .ms-card{
             width: calc((100% / 5) - 20px);
             background-color: #282C34;
-            border-radius: 10px;
-            border: 1px solid black;
+            border-radius: 5px;
             padding: 10px;
             height: 300px;
             color: white;

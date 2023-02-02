@@ -2,23 +2,24 @@
   <div class="container my-5">
     <Loader v-if="isLoading" />
     <div class="card-container my-5">
-         
+        
         <div class="ms-card" v-for="elem in posts" :key="elem.id">
+          <router-link :to="`/posts/${elem.id}`">
             <h3 class="ms-title">{{ elem.title }}</h3>
-            <div>
-                <span>Categoria: </span>
-                <span v-if="elem.category">{{ elem.category.name }}</span>
-                <span v-else>Nessuna</span>
-            </div>
-            <div>
-                <span>Tags:</span>
-                <ol v-if="elem.tags.length > 0">
-                    <li v-for="tag in elem.tags" :key="tag.id">{{ tag.name }}</li>
-                </ol>
-            <span v-else>Nessuno</span>
-            </div>
+          </router-link>
+          <div>
+              <span>Categoria: </span>
+              <span v-if="elem.category">{{ elem.category.name }}</span>
+              <span v-else>Nessuna</span>
+          </div>
+          <div>
+              <span>Tags:</span>
+              <ol v-if="elem.tags.length > 0">
+                  <li v-for="tag in elem.tags" :key="tag.id">{{ tag.name }}</li>
+              </ol>
+              <span v-else>Nessuno</span>
+          </div>
         </div>
-
     </div>
 
     <Pagination @on-page-change="getPosts" :pagination="pagination" />
@@ -91,8 +92,12 @@ export default {
             height: 300px;
             color: white;
 
+            a{
+              text-decoration: none;
+            }
+
             .ms-title{
-                color: white;
+                color: #528BFF;
             }
         }
     }

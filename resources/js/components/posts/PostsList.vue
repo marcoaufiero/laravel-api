@@ -84,14 +84,15 @@ export default {
 
         .ms-card{
             width: calc((100% / 5) - 20px);
-            background-color: #F6A800;
+            background-color: #282C34;
             border-radius: 10px;
             border: 1px solid black;
             padding: 10px;
             height: 300px;
+            color: white;
 
             .ms-title{
-                color: #E3000F;
+                color: white;
             }
         }
     }

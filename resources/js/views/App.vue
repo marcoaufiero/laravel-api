@@ -1,6 +1,7 @@
 <template>
     <div class="container my-5">
-        <PostsList/>
+        <!-- <PostsList/> -->
+        <router-view></router-view>
     </div>
 </template>
 

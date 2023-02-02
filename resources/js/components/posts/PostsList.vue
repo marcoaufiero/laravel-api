@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container my-5">
     <Loader v-if="isLoading" />
     <div class="card-container my-5">
          
